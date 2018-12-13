@@ -5,9 +5,11 @@ h3 {
     margin-top:10px;
 }
 p {
-    margin-bottom:5px;
+    margin:2px;
+    color:gray;
+    font-weight: bold;
+    background: white;
 }
-
 .buttons {
     margin:5px;
     background:gray;
@@ -20,6 +22,7 @@ p {
     padding: 2px;
     margin-top:10px;
     margin-bottom:10px;
+    min-height: 45px;
 }
 .images {
     background: lightgray;
