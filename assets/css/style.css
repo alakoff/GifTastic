@@ -24,6 +24,21 @@ p {
     margin-bottom:10px;
     min-height: 45px;
 }
+
+#btnAdd,#btnClear {
+    /* float:left; */
+    margin-top:10px;
+
+}
+
 .images {
-    background: lightgray;
+    margin-left: 25px;
+}
+
+.images1 {
+    margin-right: 30px;
+}
+
+.gifs {
+    margin:5px;
 }

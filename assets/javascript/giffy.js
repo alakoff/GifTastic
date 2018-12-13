@@ -4,7 +4,7 @@ function loadInitialTopics() {
 
     var initialTopics = ['cat','dog','skiing','golfing'];
 
-    //Display buttons
+    //Display buttons container
     $(".btnBox").css('display', 'block');
 
     for (i=0;i<initialTopics.length;i++) {
@@ -15,6 +15,7 @@ function loadInitialTopics() {
         //Appends new button to buttons box div at top of page
         $('.btnBox').append(btnNew);
     }
+
 }  //End loadInitialTopics Function
 
 
@@ -41,6 +42,7 @@ function addButton() {
         //Clears current button term
         $('#btnTerm').val('');
     }
+
 }  //End addButton Function
 
 
@@ -53,7 +55,7 @@ function getGifs(btnId) {
 
     //URL query string
     var urlQuery = 'https://api.giphy.com/v1/gifs/search?q=' +
-    btnId + '&api_key=' + apiKey;
+    btnId + '&api_key=' + apiKey + "&rating=g"
 
 
     //AJAX call to get giphy images
@@ -64,6 +66,7 @@ function getGifs(btnId) {
 
          //Clear current gif images
          $(".images").empty();
+         $(".images1").empty();
 
          //Response processing
          var results = response.data;
@@ -83,7 +86,12 @@ function getGifs(btnId) {
             gifDiv.append(title);
             gifDiv.append(p);
             gifDiv.append(gifImage);
-            $(".images").prepend(gifDiv);
+            if (i<5) {
+                $(".images").append(gifDiv);
+            } else {
+                $(".images1").append(gifDiv);
+            }
+
          }
 
     })
@@ -93,7 +101,7 @@ function getGifs(btnId) {
 
 function animateGifs(gifImage) {
     //Checks the current animation state of the clicked gif image
-    //If current data-state is 'still', then update image url to animated url\
+    //If current data-state is 'still', then update image url to animated url
 
     if (gifImage.attr("data-state") === "still") {
 
@@ -132,10 +140,16 @@ $(document).ready(function () {
         animateGifs(gifImage);
     })
 
+    $(document).on("click",".images1 .gifs", function() {
+        var gifImage = $(this);
+        animateGifs(gifImage);
+    })
+
     //Clear all search terms and gif images
     $(document).on("click","#btnClear",function() {
         $(".btnBox").empty();
         $(".images").empty();
+        $(".images1").empty();
     })
 
 })  //End Document Ready
