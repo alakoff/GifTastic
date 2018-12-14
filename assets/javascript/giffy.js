@@ -78,14 +78,32 @@ function getGifs(btnId) {
             var title = $("<p>").text("Title: " + results[i].title);
             var p = $("<p>").text("Rating: " + results[i].rating);
             var gifImage = $("<img>");
+
             gifImage.attr("src", results[i].images.fixed_height_still.url);
             gifImage.attr("data-still", results[i].images.fixed_height_still.url);
             gifImage.attr("data-animate", results[i].images.fixed_height.url);
             gifImage.attr('data-state','still');
             gifImage.attr("class","gifs");
+
+
+            //Creates download link with specified attributes
+            var btnLink = $("<a target='_blank' download>");
+            btnLink.attr("class", "btn-download");
+            btnLink.attr('id','btn-download'+i);
+            btnLink.attr('href', gifImage.attr("src"));
+
+            //Add download image to btnLink
+            var img = '<img src="assets/images/download.png" height=30 width=30 />';
+            btnLink.append(img);
+
+            //Appends title, rating, download link and image to div
             gifDiv.append(title);
             gifDiv.append(p);
             gifDiv.append(gifImage);
+            //gifDiv.append(btnLink);
+
+
+            //First five images go in first div and second five images go in second div
             if (i<5) {
                 $(".images").append(gifDiv);
             } else {
@@ -97,6 +115,7 @@ function getGifs(btnId) {
     })
 
 } //End getGifs Function
+
 
 
 function animateGifs(gifImage) {
@@ -116,6 +135,7 @@ function animateGifs(gifImage) {
     }
 
 }  //End animateGifs Function
+
 
 //Document ready function
 $(document).ready(function () {

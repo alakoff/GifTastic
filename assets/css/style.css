@@ -30,6 +30,10 @@ p {
     margin-top:10px;
 
 }
+.btn-download {
+    float: left;
+    margin-top: 5px;
+}
 
 .images {
     margin-left: 25px;
@@ -41,4 +45,6 @@ p {
 
 .gifs {
     margin:5px;
+    height: 150px;
+    width: 200px;
 }
